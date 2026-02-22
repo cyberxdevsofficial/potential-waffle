@@ -3,31 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ultimate Premium Web Font Previewer</title>
+<title>Anime Style Web Font Previewer</title>
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Montserrat&family=Lobster&family=Pacifico&family=Open+Sans&family=Oswald&family=Raleway&family=Indie+Flower&family=Playfair+Display&family=Nunito&family=Ubuntu&display=swap" rel="stylesheet">
 
-<!-- Three.js CDN for 3D background -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
+<!-- Anime-inspired Font Awesome icons for copy -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pEMx3e5H/hZp4OGYq++bVn3l0z+HxXwMGbF5pW7zqG6/7ceH22vVZ7lPxVq1t1VxH4dyXcW5i9jX6Hq6V0k3kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
 html, body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    height: 100%;
-    font-family: Arial, sans-serif;
-    background: #000;
-    color: #fff;
-}
-
-#canvas-bg {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(120deg, #f6d365, #fda085);
+    min-height: 100vh;
+    color: #333;
 }
 
 .overlay {
@@ -41,83 +32,98 @@ html, body {
 h1 {
     text-align: center;
     font-size: 3em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background: linear-gradient(90deg,#ff00cc,#3333ff,#00ffcc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradient 5s ease infinite;
-    margin-bottom: 20px;
-}
-
-@keyframes gradient {
-    0% {background-position:0% 50%;}
-    50% {background-position:100% 50%;}
-    100% {background-position:0% 50%;}
+    font-family: 'Pacifico', cursive;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 }
 
 input {
     width: 100%;
-    padding: 20px;
-    font-size: 1.5em;
-    border-radius: 12px;
-    border: 2px solid #0ff;
+    padding: 15px;
+    font-size: 1.2em;
+    border-radius: 15px;
+    border: none;
     outline: none;
-    margin: 20px 0;
-    background: rgba(0,0,0,0.25);
-    color: #0ff;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 0 20px #0ff, 0 0 40px #0ff inset;
+    margin-bottom: 30px;
+    background: rgba(255,255,255,0.8);
+    color: #333;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
 
 input:focus {
-    box-shadow: 0 0 40px #0ff, 0 0 80px #0ff inset;
-    border-color: #0ff;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
 .fonts-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 25px;
-    margin-top: 30px;
 }
 
 .font-box {
-    background: rgba(0,0,0,0.25);
+    background: rgba(255,255,255,0.9);
     padding: 20px;
-    border-radius: 20px;
+    border-radius: 25px;
     text-align: center;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    backdrop-filter: blur(10px);
-    border: 2px solid #0ff;
-    box-shadow: 0 0 20px #0ff, 0 0 40px #0ff inset;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
 }
 
 .font-box:hover {
-    transform: scale(1.05) rotateX(5deg) rotateY(5deg);
-    box-shadow: 0 0 50px #0ff, 0 0 80px #0ff inset;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .font-name {
     font-size: 0.9em;
     margin-top: 10px;
-    color: #0ff;
+    color: #555;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #fda085;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+    background: #f6d365;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background-image: url('https://images.unsplash.com/photo-1549887534-0a0f891473c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTI4NzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjQ1Mjk3Njk&ixlib=rb-4.0.3&q=80&w=1080');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: 0;
 }
 </style>
 </head>
 <body>
 
-<canvas id="canvas-bg"></canvas>
-
 <div class="overlay">
-    <h1>Ultimate Premium Web Font Previewer</h1>
-    <input type="text" id="textInput" placeholder="Type something here..." />
+    <h1>Anime Font Previewer</h1>
+    <input type="text" id="textInput" placeholder="Type your text here..." />
     <div class="fonts-container" id="fontsContainer"></div>
 </div>
 
 <script>
-// ----- Fonts List -----
+// Fonts List
 const fonts = [
     "Arial","Verdana","Tahoma","Trebuchet MS","Impact","Times New Roman","Georgia",
     "Courier New","Brush Script MT","Roboto","Montserrat","Lobster","Pacifico",
@@ -141,82 +147,30 @@ const container = document.getElementById('fontsContainer');
 const input = document.getElementById('textInput');
 
 function renderFonts() {
-    const text = input.value || "Your Text Here!";
-    container.innerHTML = "";
+    const text = input.value || "Your text here!";
+    container.innerHTML = '';
     fonts.forEach(font => {
         const box = document.createElement('div');
         box.className = 'font-box';
         box.style.fontFamily = font;
-        box.innerHTML = `<div>${text}</div><div class="font-name">${font}</div>`;
+        box.innerHTML = `<div>${text}</div>
+                         <div class="font-name">${font}</div>
+                         <button class="copy-btn"><i class="fa-solid fa-copy"></i></button>`;
         container.appendChild(box);
+
+        // Copy Button Functionality
+        box.querySelector('.copy-btn').addEventListener('click', ()=>{
+            navigator.clipboard.writeText(text).then(()=>{
+                box.querySelector('.copy-btn').innerHTML = 'Copied!';
+                setTimeout(()=>{ box.querySelector('.copy-btn').innerHTML = '<i class="fa-solid fa-copy"></i>'; },1000);
+            });
+        });
     });
 }
+
 renderFonts();
 input.addEventListener('input', renderFonts);
-
-// ----- Three.js Animated Interactive Background -----
-const canvas = document.getElementById('canvas-bg');
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
-
-// Particle System
-const particles = new THREE.Group();
-scene.add(particles);
-
-const particleCount = 150;
-const particleGeometry = new THREE.SphereGeometry(0.3, 8, 8);
-for(let i=0;i<particleCount;i++){
-    const material = new THREE.MeshStandardMaterial({ color: 0x00ffff, emissive:0x00ffff });
-    const particle = new THREE.Mesh(particleGeometry, material);
-    particle.position.set(
-        (Math.random()-0.5)*100,
-        (Math.random()-0.5)*50,
-        (Math.random()-0.5)*100
-    );
-    particles.add(particle);
-}
-
-// Lights
-const ambient = new THREE.AmbientLight(0x00ffff, 0.2);
-scene.add(ambient);
-
-const pointLight1 = new THREE.PointLight(0xff00ff, 1.2);
-scene.add(pointLight1);
-const pointLight2 = new THREE.PointLight(0x00ffff, 1.2);
-scene.add(pointLight2);
-
-camera.position.z = 50;
-
-// Mouse movement interaction
-let mouseX = 0, mouseY = 0;
-document.addEventListener('mousemove', e=>{
-    mouseX = (e.clientX - window.innerWidth/2)/20;
-    mouseY = (e.clientY - window.innerHeight/2)/20;
-});
-
-// Animate
-function animate() {
-    requestAnimationFrame(animate);
-    particles.rotation.y += 0.001 + mouseX*0.001;
-    particles.rotation.x += 0.001 + mouseY*0.001;
-
-    particles.children.forEach(p=>{
-        p.rotation.x += 0.01;
-        p.rotation.y += 0.01;
-    });
-
-    renderer.render(scene, camera);
-}
-animate();
-
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
 </script>
+
 </body>
 </html>
