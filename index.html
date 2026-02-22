@@ -3,171 +3,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anime Fancy Font Previewer</title>
+<title>Anime Fancy Text Generator</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Montserrat&family=Lobster&family=Pacifico&family=Open+Sans&family=Oswald&family=Raleway&family=Indie+Flower&family=Playfair+Display&family=Nunito&family=Ubuntu&display=swap" rel="stylesheet">
-
-<!-- Font Awesome for copy icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pEMx3e5H/hZp4OGYq++bVn3l0z+HxXwMGbF5pW7zqG6/7ceH22vVZ7lPxVq1t1VxH4dyXcW5i9jX6Hq6V0k3kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Font Awesome for copy icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
 <style>
 html, body {
-    margin:0; padding:0;
+    margin: 0;
+    padding: 0;
     font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg,#f6d365,#fda085);
     min-height: 100vh;
-    background: linear-gradient(135deg,#ffecd2,#fcb69f);
     color: #333;
 }
+
 .overlay {
-    position: relative;
-    z-index:2;
-    padding:20px;
-    max-width:1400px;
-    margin:auto;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
 }
+
 h1 {
-    text-align:center;
+    text-align: center;
     font-family: 'Pacifico', cursive;
-    font-size:3em;
-    margin-bottom:30px;
-    color:#fff;
+    font-size: 3em;
+    margin-bottom: 30px;
+    color: #fff;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 }
+
 input {
-    width:100%;
-    padding:15px;
-    font-size:1.3em;
-    border-radius:15px;
-    border:none;
-    outline:none;
-    margin-bottom:30px;
-    background: rgba(255,255,255,0.9);
-    color: #333;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    margin-bottom: 30px;
+    background: rgba(255,255,255,0.8);
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
-input:focus { box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+
+input:focus {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
 
 .fonts-container {
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
-    gap:25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
 }
+
 .font-box {
-    background: rgba(255,255,255,0.95);
-    padding:20px;
-    border-radius:25px;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
+    background: rgba(255,255,255,0.9);
+    padding: 20px;
+    border-radius: 25px;
+    text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
+
 .font-box:hover {
     transform: translateY(-5px);
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
+
 .font-name {
-    font-size:0.9em;
-    margin-top:10px;
-    color:#555;
+    font-size: 0.9em;
+    margin-top: 10px;
+    color: #555;
 }
+
+.converted-text {
+    font-size: 1.2em;
+    margin-top: 10px;
+    word-wrap: break-word;
+}
+
 .copy-btn {
-    position:absolute;
-    top:10px;
-    right:10px;
-    background:#fcb69f;
-    border:none;
-    padding:5px 10px;
-    border-radius:10px;
-    font-size:0.9em;
-    cursor:pointer;
-    transition:all 0.2s ease;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #fda085;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
-.copy-btn:hover { background:#ffecd2; }
-body::before {
-    content:'';
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background-image: url('https://images.unsplash.com/photo-1549887534-0a0f891473c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTI4NzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjQ1Mjk3Njk&ixlib=rb-4.0.3&q=80&w=1080');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.15;
-    z-index:0;
+
+.copy-btn:hover {
+    background: #f6d365;
 }
 </style>
 </head>
 <body>
 
 <div class="overlay">
-<h1>Anime Fancy Font Previewer</h1>
-<input type="text" id="textInput" placeholder="Type your text here..." />
-<div class="fonts-container" id="fontsContainer"></div>
+    <h1>Anime Fancy Text Generator</h1>
+    <input type="text" id="textInput" placeholder="Type your text here..." />
+    <div class="fonts-container" id="fontsContainer"></div>
 </div>
 
 <script>
-// 100+ Fonts
-const fonts = [
-"Arial","Verdana","Tahoma","Trebuchet MS","Impact","Times New Roman","Georgia",
-"Courier New","Brush Script MT","Roboto","Montserrat","Lobster","Pacifico",
-"Open Sans","Oswald","Raleway","Indie Flower","Playfair Display","Nunito","Ubuntu",
-"Merriweather","Fira Sans","Dancing Script","PT Sans","PT Serif","Quicksand",
-"Roboto Slab","Caveat","Bebas Neue","Josefin Sans","Cabin","Poppins","Lato",
-"Arvo","Exo 2","Comfortaa","Varela Round","Shadows Into Light","Anton",
-"Karla","Work Sans","Satisfy","Acme","Baloo 2","Amatic SC","Bangers",
-"Cinzel","EB Garamond","Kalam","Libre Baskerville","Nanum Gothic","Overpass",
-"PT Mono","Righteous","Spectral","Vollkorn","Zilla Slab","Ubuntu Mono",
-"Fjalla One","Kanit","Mukta","Oxygen","Roboto Condensed","Signika",
-"Ubuntu Condensed","Yatra One","Arimo","Asap","Assistant","Catamaran",
-"Chivo","Cormorant Garamond","Courgette","Crete Round","Crimson Text",
-"Dosis","Encode Sans","Exo","Fira Mono","Gloria Hallelujah","Gochi Hand",
-"Great Vibes","Hind","Inconsolata","Josefin Slab","Judson","Julius Sans One",
-"Lobster Two","Muli","Neuton","Notable","Nunito Sans","Pathway Gothic One",
-"PT Sans Narrow","Raleway Dots","Sarabun","Secular One","Teko","Viga"
-];
+// Fancy Unicode styles
+const fancyStyles = {
+    "Small Caps": "ₐᵦᶜᵈₑᶠgₕᵢⱼₖₗₘₙₒₚqᵣₛₜᵤᵥwₓy𝓏",
+    "Squared": "🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉",
+    "Fancy Caps": "卂乃ᑌᎶ卄工山ㄥㄩᏋ匚ᗪᗴ下厶卩几ㄚ尸丁匚丨ᑕ卩卄",
+    "Upside Down": "ɐqɔpǝɟƃɥᴉɾʞʅɯuodbɹsʇnʌʍxʎz",
+    "Full Width": "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ"
+};
 
-// Fancy Text Mapping (simple style)
-function toFancyText(text){
-    // This is a basic Unicode "small caps / stylish" conversion
-    const map = {
-        A:'卂',B:'乃',C:'ᄃ',D:'ᗪ',E:'乇',F:'千',G:'Ꮆ',H:'卄',I:'丨',J:'ﾌ',K:'Ҝ',
-        L:'ㄥ',M:'爪',N:'几',O:'ㄖ',P:'卩',Q:'Ɋ',R:'尺',S:'丂',T:'ㄒ',U:'凵',V:'リ',
-        W:'山',X:'乂',Y:'丫',Z:'乙',
-        a:'卂',b:'乃',c:'ᄃ',d:'ᗪ',e:'乇',f:'千',g:'Ꮆ',h:'卄',i:'丨',j:'ﾌ',k:'Ҝ',
-        l:'ㄥ',m:'爪',n:'几',o:'ㄖ',p:'卩',q:'Ɋ',r:'尺',s:'丂',t:'ㄒ',u:'凵',v:'リ',
-        w:'山',x:'乂',y:'丫',z:'乙',
-        ' ':' '
-    };
-    return text.split('').map(c=>map[c]||c).join('');
+// Simple character mapping function
+function convertText(text, styleName){
+    let converted = "";
+    text = text.toUpperCase();
+    if(styleName === "Small Caps"){
+        const mapping = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const small = "ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ";
+        for(let c of text){
+            let idx = mapping.indexOf(c);
+            converted += idx>=0 ? small[idx] : c;
+        }
+    } else if(styleName === "Fancy Caps"){
+        const mapping = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const fancy = "卂乃ᑌᎶ卄工山ㄥㄩᏋ匚ᗪᗴ下厶卩几ㄚ尸丁匚丨ᑕ卩卄";
+        for(let c of text){
+            let idx = mapping.indexOf(c);
+            converted += idx>=0 ? fancy[idx] : c;
+        }
+    } else if(styleName === "Upside Down"){
+        const mapping = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const upside = "∀𐐒ƆpƎℲ⅁HΙſʞ⅂WNOԀὉᴚS⊥∩ΛMX⅄Z";
+        for(let c of text){
+            let idx = mapping.indexOf(c);
+            converted += idx>=0 ? upside[idx] : c;
+        }
+    } else if(styleName === "Full Width"){
+        const mapping = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const full = "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ";
+        for(let c of text){
+            let idx = mapping.indexOf(c);
+            converted += idx>=0 ? full[idx] : c;
+        }
+    } else if(styleName === "Squared"){
+        const mapping = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const square = "🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉";
+        for(let c of text){
+            let idx = mapping.indexOf(c);
+            converted += idx>=0 ? square[idx] : c;
+        }
+    } else{
+        converted = text;
+    }
+    return converted;
 }
 
 const container = document.getElementById('fontsContainer');
 const input = document.getElementById('textInput');
 
-function renderFonts(){
+function renderConverted(){
     const text = input.value || "Anuga Official";
-    const fancyText = toFancyText(text);
     container.innerHTML = '';
-    fonts.forEach(font=>{
+    Object.keys(fancyStyles).forEach(style=>{
+        const converted = convertText(text, style);
         const box = document.createElement('div');
-        box.className='font-box';
-        box.style.fontFamily=font;
-        box.innerHTML=`<div>${fancyText}</div>
-                       <div class="font-name">${font}</div>
-                       <button class="copy-btn"><i class="fa-solid fa-copy"></i></button>`;
+        box.className = 'font-box';
+        box.innerHTML = `<div class="converted-text">${converted}</div>
+                         <div class="font-name">${style}</div>
+                         <button class="copy-btn"><i class="fa-solid fa-copy"></i></button>`;
         container.appendChild(box);
+
+        // Copy functionality
         box.querySelector('.copy-btn').addEventListener('click', ()=>{
-            navigator.clipboard.writeText(fancyText).then(()=>{
-                box.querySelector('.copy-btn').innerHTML='Copied!';
-                setTimeout(()=>{box.querySelector('.copy-btn').innerHTML='<i class="fa-solid fa-copy"></i>';},1000);
+            navigator.clipboard.writeText(converted).then(()=>{
+                box.querySelector('.copy-btn').innerHTML = 'Copied!';
+                setTimeout(()=>{ box.querySelector('.copy-btn').innerHTML = '<i class="fa-solid fa-copy"></i>'; },1000);
             });
         });
     });
 }
 
-renderFonts();
-input.addEventListener('input', renderFonts);
+renderConverted();
+input.addEventListener('input', renderConverted);
 </script>
+
 </body>
 </html>
