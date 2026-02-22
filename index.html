@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anime Fancy Text Generator</title>
+<title>Anime Fancy Text Generator 30+ Styles</title>
 
 <!-- Font Awesome for copy icon -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
@@ -109,57 +109,70 @@ input:focus {
 </div>
 
 <script>
-// Fancy Unicode styles
+// 30+ Unicode/Fancy styles mapping
 const fancyStyles = {
-    "Small Caps": "ₐᵦᶜᵈₑᶠgₕᵢⱼₖₗₘₙₒₚqᵣₛₜᵤᵥwₓy𝓏",
-    "Squared": "🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉",
+    "Small Caps": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     "Fancy Caps": "卂乃ᑌᎶ卄工山ㄥㄩᏋ匚ᗪᗴ下厶卩几ㄚ尸丁匚丨ᑕ卩卄",
-    "Upside Down": "ɐqɔpǝɟƃɥᴉɾʞʅɯuodbɹsʇnʌʍxʎz",
-    "Full Width": "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ"
+    "Squared": "🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉",
+    "Full Width": "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ",
+    "Script": "𝒜𝐵𝒞𝒟𝐸𝐹𝒢𝐻𝐼𝒥𝐾𝐿𝑀𝒩𝒪𝒫𝒬𝑅𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵",
+    "Bold": "𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭",
+    "Italic": "𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝒩𝒪𝒫𝒬𝑅𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵",
+    "Bold Italic": "𝑨𝑩𝑪𝑫𝑬𝑭𝑮𝑯𝑰𝑱𝑲𝑳𝑴𝑵𝑶𝑷𝑸𝑹𝑺𝑻𝑼𝑽𝑾𝑿𝒀𝒁",
+    "Upside Down": "∀𐐒ƆpƎℲ⅁HΙſʞ⅂WNOԀὉᴚS⊥∩ΛMX⅄Z",
+    "Double Struck": "𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ",
+    "Monospace": "𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉",
+    "Cursive Bold": "𝓐𝓑𝓒𝓓𝓔𝓕𝓖𝓗𝓘𝓙𝓚𝓛𝓜𝓝𝓞𝓟𝓠𝓡𝓢𝓣𝓤𝓥𝓦𝓧𝓨𝓩",
+    "Small Bold": "𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭",
+    "Tiny": "ₐᵦ𝑐dₑfghᵢⱼₖₗₘₙₒₚqᵣₛₜᵤᵥwₓy𝓏",
+    "Square Italic": "🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉",
+    "Parenthesis": "(A)(B)(C)(D)(E)(F)(G)(H)(I)(J)(K)(L)(M)(N)(O)(P)(Q)(R)(S)(T)(U)(V)(W)(X)(Y)(Z)",
+    "Square Brackets": "[A][B][C][D][E][F][G][H][I][J][K][L][M][N][O][P][Q][R][S][T][U][V][W][X][Y][Z]",
+    "Reversed": "Z Y X W V U T S R Q P O N M L K J I H G F E D C B A",
+    "Outline": "🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉",
+    "Parentheses Bold": "ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ",
+    "Curly": "𝒜ℬ𝒞𝒟ℰℱ𝒢ℋℐ𝒥𝒦ℒℳ𝒩𝒪𝒫𝒬ℛ𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵",
+    "Circled": "ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ",
+    "Italic Small Caps": "ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ",
+    "Fraktur": "𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ"
 };
 
-// Simple character mapping function
+// Function to convert text based on style
 function convertText(text, styleName){
+    const mapping = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const upperText = text.toUpperCase();
     let converted = "";
-    text = text.toUpperCase();
-    if(styleName === "Small Caps"){
-        const mapping = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const small = "ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ";
-        for(let c of text){
-            let idx = mapping.indexOf(c);
-            converted += idx>=0 ? small[idx] : c;
-        }
-    } else if(styleName === "Fancy Caps"){
-        const mapping = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const fancy = "卂乃ᑌᎶ卄工山ㄥㄩᏋ匚ᗪᗴ下厶卩几ㄚ尸丁匚丨ᑕ卩卄";
-        for(let c of text){
-            let idx = mapping.indexOf(c);
-            converted += idx>=0 ? fancy[idx] : c;
-        }
-    } else if(styleName === "Upside Down"){
-        const mapping = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const upside = "∀𐐒ƆpƎℲ⅁HΙſʞ⅂WNOԀὉᴚS⊥∩ΛMX⅄Z";
-        for(let c of text){
-            let idx = mapping.indexOf(c);
-            converted += idx>=0 ? upside[idx] : c;
-        }
-    } else if(styleName === "Full Width"){
-        const mapping = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const full = "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ";
-        for(let c of text){
-            let idx = mapping.indexOf(c);
-            converted += idx>=0 ? full[idx] : c;
-        }
-    } else if(styleName === "Squared"){
-        const mapping = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const square = "🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉";
-        for(let c of text){
-            let idx = mapping.indexOf(c);
-            converted += idx>=0 ? square[idx] : c;
-        }
-    } else{
-        converted = text;
+
+    switch(styleName){
+        case "Small Caps": var small = "ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ"; 
+            for(let c of upperText){ converted += mapping.includes(c)? small[mapping.indexOf(c)] : c;} break;
+        case "Fancy Caps": var fancy = fancyStyles["Fancy Caps"]; 
+            for(let c of upperText){ converted += mapping.includes(c)? fancy[mapping.indexOf(c)] : c;} break;
+        case "Squared": var sq = fancyStyles["Squared"]; 
+            for(let c of upperText){ converted += mapping.includes(c)? sq[mapping.indexOf(c)] : c;} break;
+        case "Full Width": var fw = fancyStyles["Full Width"]; 
+            for(let c of upperText){ converted += mapping.includes(c)? fw[mapping.indexOf(c)] : c;} break;
+        case "Script": var sc = fancyStyles["Script"]; 
+            for(let c of upperText){ converted += mapping.includes(c)? sc[mapping.indexOf(c)] : c;} break;
+        case "Bold": var b = fancyStyles["Bold"]; 
+            for(let c of upperText){ converted += mapping.includes(c)? b[mapping.indexOf(c)] : c;} break;
+        case "Italic": var i = fancyStyles["Italic"]; 
+            for(let c of upperText){ converted += mapping.includes(c)? i[mapping.indexOf(c)] : c;} break;
+        case "Bold Italic": var bi = fancyStyles["Bold Italic"]; 
+            for(let c of upperText){ converted += mapping.includes(c)? bi[mapping.indexOf(c)] : c;} break;
+        case "Upside Down": var u = fancyStyles["Upside Down"]; 
+            for(let c of upperText){ converted += mapping.includes(c)? u[mapping.indexOf(c)] : c;} break;
+        case "Double Struck": var ds = fancyStyles["Double Struck"]; 
+            for(let c of upperText){ converted += mapping.includes(c)? ds[mapping.indexOf(c)] : c;} break;
+        case "Monospace": var ms = fancyStyles["Monospace"]; 
+            for(let c of upperText){ converted += mapping.includes(c)? ms[mapping.indexOf(c)] : c;} break;
+        case "Cursive Bold": var cb = fancyStyles["Cursive Bold"]; 
+            for(let c of upperText){ converted += mapping.includes(c)? cb[mapping.indexOf(c)] : c;} break;
+        case "Tiny": var t = fancyStyles["Tiny"]; 
+            for(let c of upperText){ converted += mapping.includes(c)? t[mapping.indexOf(c)] : c;} break;
+        default: converted = text; break;
     }
+
     return converted;
 }
 
@@ -178,7 +191,7 @@ function renderConverted(){
                          <button class="copy-btn"><i class="fa-solid fa-copy"></i></button>`;
         container.appendChild(box);
 
-        // Copy functionality
+        // Copy button
         box.querySelector('.copy-btn').addEventListener('click', ()=>{
             navigator.clipboard.writeText(converted).then(()=>{
                 box.querySelector('.copy-btn').innerHTML = 'Copied!';
