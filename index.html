@@ -3,166 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anime Style Web Font Previewer</title>
+<title>Anime Fancy Font Previewer</title>
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Montserrat&family=Lobster&family=Pacifico&family=Open+Sans&family=Oswald&family=Raleway&family=Indie+Flower&family=Playfair+Display&family=Nunito&family=Ubuntu&display=swap" rel="stylesheet">
 
-<!-- Anime-inspired Font Awesome icons for copy -->
+<!-- Font Awesome for copy icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pEMx3e5H/hZp4OGYq++bVn3l0z+HxXwMGbF5pW7zqG6/7ceH22vVZ7lPxVq1t1VxH4dyXcW5i9jX6Hq6V0k3kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
 html, body {
-    margin: 0;
-    padding: 0;
+    margin:0; padding:0;
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(120deg, #f6d365, #fda085);
     min-height: 100vh;
+    background: linear-gradient(135deg,#ffecd2,#fcb69f);
     color: #333;
 }
-
 .overlay {
     position: relative;
-    z-index: 2;
-    padding: 20px;
-    max-width: 1400px;
-    margin: auto;
+    z-index:2;
+    padding:20px;
+    max-width:1400px;
+    margin:auto;
 }
-
 h1 {
-    text-align: center;
-    font-size: 3em;
+    text-align:center;
     font-family: 'Pacifico', cursive;
-    margin-bottom: 30px;
-    color: #fff;
+    font-size:3em;
+    margin-bottom:30px;
+    color:#fff;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 }
-
 input {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.2em;
-    border-radius: 15px;
-    border: none;
-    outline: none;
-    margin-bottom: 30px;
-    background: rgba(255,255,255,0.8);
+    width:100%;
+    padding:15px;
+    font-size:1.3em;
+    border-radius:15px;
+    border:none;
+    outline:none;
+    margin-bottom:30px;
+    background: rgba(255,255,255,0.9);
     color: #333;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
-
-input:focus {
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-}
+input:focus { box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
 
 .fonts-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+    gap:25px;
 }
-
 .font-box {
-    background: rgba(255,255,255,0.9);
-    padding: 20px;
-    border-radius: 25px;
-    text-align: center;
+    background: rgba(255,255,255,0.95);
+    padding:20px;
+    border-radius:25px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    cursor: default;
 }
-
 .font-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
-
 .font-name {
-    font-size: 0.9em;
-    margin-top: 10px;
-    color: #555;
+    font-size:0.9em;
+    margin-top:10px;
+    color:#555;
 }
-
 .copy-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #fda085;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-size: 0.9em;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:#fcb69f;
+    border:none;
+    padding:5px 10px;
+    border-radius:10px;
+    font-size:0.9em;
+    cursor:pointer;
+    transition:all 0.2s ease;
 }
-
-.copy-btn:hover {
-    background: #f6d365;
-}
-
+.copy-btn:hover { background:#ffecd2; }
 body::before {
-    content: '';
-    position: fixed;
+    content:'';
+    position:fixed;
     top:0; left:0;
     width:100%; height:100%;
     background-image: url('https://images.unsplash.com/photo-1549887534-0a0f891473c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTI4NzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjQ1Mjk3Njk&ixlib=rb-4.0.3&q=80&w=1080');
     background-size: cover;
     background-position: center;
     opacity: 0.15;
-    z-index: 0;
+    z-index:0;
 }
 </style>
 </head>
 <body>
 
 <div class="overlay">
-    <h1>Anime Font Previewer</h1>
-    <input type="text" id="textInput" placeholder="Type your text here..." />
-    <div class="fonts-container" id="fontsContainer"></div>
+<h1>Anime Fancy Font Previewer</h1>
+<input type="text" id="textInput" placeholder="Type your text here..." />
+<div class="fonts-container" id="fontsContainer"></div>
 </div>
 
 <script>
-// Fonts List
+// 100+ Fonts
 const fonts = [
-    "Arial","Verdana","Tahoma","Trebuchet MS","Impact","Times New Roman","Georgia",
-    "Courier New","Brush Script MT","Roboto","Montserrat","Lobster","Pacifico",
-    "Open Sans","Oswald","Raleway","Indie Flower","Playfair Display","Nunito","Ubuntu",
-    "Merriweather","Fira Sans","Dancing Script","PT Sans","PT Serif","Quicksand",
-    "Roboto Slab","Caveat","Bebas Neue","Josefin Sans","Cabin","Poppins","Lato",
-    "Arvo","Exo 2","Comfortaa","Varela Round","Shadows Into Light","Anton",
-    "Karla","Work Sans","Satisfy","Acme","Baloo 2","Amatic SC","Bangers",
-    "Cinzel","EB Garamond","Kalam","Libre Baskerville","Nanum Gothic","Overpass",
-    "PT Mono","Righteous","Spectral","Vollkorn","Zilla Slab","Ubuntu Mono",
-    "Fjalla One","Kanit","Mukta","Oxygen","Roboto Condensed","Signika",
-    "Ubuntu Condensed","Yatra One","Arimo","Asap","Assistant","Catamaran",
-    "Chivo","Cormorant Garamond","Courgette","Crete Round","Crimson Text",
-    "Dosis","Encode Sans","Exo","Fira Mono","Gloria Hallelujah","Gochi Hand",
-    "Great Vibes","Hind","Inconsolata","Josefin Slab","Judson","Julius Sans One",
-    "Lobster Two","Muli","Neuton","Notable","Nunito Sans","Pathway Gothic One",
-    "PT Sans Narrow","Raleway Dots","Sarabun","Secular One","Teko","Viga"
+"Arial","Verdana","Tahoma","Trebuchet MS","Impact","Times New Roman","Georgia",
+"Courier New","Brush Script MT","Roboto","Montserrat","Lobster","Pacifico",
+"Open Sans","Oswald","Raleway","Indie Flower","Playfair Display","Nunito","Ubuntu",
+"Merriweather","Fira Sans","Dancing Script","PT Sans","PT Serif","Quicksand",
+"Roboto Slab","Caveat","Bebas Neue","Josefin Sans","Cabin","Poppins","Lato",
+"Arvo","Exo 2","Comfortaa","Varela Round","Shadows Into Light","Anton",
+"Karla","Work Sans","Satisfy","Acme","Baloo 2","Amatic SC","Bangers",
+"Cinzel","EB Garamond","Kalam","Libre Baskerville","Nanum Gothic","Overpass",
+"PT Mono","Righteous","Spectral","Vollkorn","Zilla Slab","Ubuntu Mono",
+"Fjalla One","Kanit","Mukta","Oxygen","Roboto Condensed","Signika",
+"Ubuntu Condensed","Yatra One","Arimo","Asap","Assistant","Catamaran",
+"Chivo","Cormorant Garamond","Courgette","Crete Round","Crimson Text",
+"Dosis","Encode Sans","Exo","Fira Mono","Gloria Hallelujah","Gochi Hand",
+"Great Vibes","Hind","Inconsolata","Josefin Slab","Judson","Julius Sans One",
+"Lobster Two","Muli","Neuton","Notable","Nunito Sans","Pathway Gothic One",
+"PT Sans Narrow","Raleway Dots","Sarabun","Secular One","Teko","Viga"
 ];
+
+// Fancy Text Mapping (simple style)
+function toFancyText(text){
+    // This is a basic Unicode "small caps / stylish" conversion
+    const map = {
+        A:'卂',B:'乃',C:'ᄃ',D:'ᗪ',E:'乇',F:'千',G:'Ꮆ',H:'卄',I:'丨',J:'ﾌ',K:'Ҝ',
+        L:'ㄥ',M:'爪',N:'几',O:'ㄖ',P:'卩',Q:'Ɋ',R:'尺',S:'丂',T:'ㄒ',U:'凵',V:'リ',
+        W:'山',X:'乂',Y:'丫',Z:'乙',
+        a:'卂',b:'乃',c:'ᄃ',d:'ᗪ',e:'乇',f:'千',g:'Ꮆ',h:'卄',i:'丨',j:'ﾌ',k:'Ҝ',
+        l:'ㄥ',m:'爪',n:'几',o:'ㄖ',p:'卩',q:'Ɋ',r:'尺',s:'丂',t:'ㄒ',u:'凵',v:'リ',
+        w:'山',x:'乂',y:'丫',z:'乙',
+        ' ':' '
+    };
+    return text.split('').map(c=>map[c]||c).join('');
+}
 
 const container = document.getElementById('fontsContainer');
 const input = document.getElementById('textInput');
 
-function renderFonts() {
-    const text = input.value || "Your text here!";
+function renderFonts(){
+    const text = input.value || "Anuga Official";
+    const fancyText = toFancyText(text);
     container.innerHTML = '';
-    fonts.forEach(font => {
+    fonts.forEach(font=>{
         const box = document.createElement('div');
-        box.className = 'font-box';
-        box.style.fontFamily = font;
-        box.innerHTML = `<div>${text}</div>
-                         <div class="font-name">${font}</div>
-                         <button class="copy-btn"><i class="fa-solid fa-copy"></i></button>`;
+        box.className='font-box';
+        box.style.fontFamily=font;
+        box.innerHTML=`<div>${fancyText}</div>
+                       <div class="font-name">${font}</div>
+                       <button class="copy-btn"><i class="fa-solid fa-copy"></i></button>`;
         container.appendChild(box);
-
-        // Copy Button Functionality
         box.querySelector('.copy-btn').addEventListener('click', ()=>{
-            navigator.clipboard.writeText(text).then(()=>{
-                box.querySelector('.copy-btn').innerHTML = 'Copied!';
-                setTimeout(()=>{ box.querySelector('.copy-btn').innerHTML = '<i class="fa-solid fa-copy"></i>'; },1000);
+            navigator.clipboard.writeText(fancyText).then(()=>{
+                box.querySelector('.copy-btn').innerHTML='Copied!';
+                setTimeout(()=>{box.querySelector('.copy-btn').innerHTML='<i class="fa-solid fa-copy"></i>';},1000);
             });
         });
     });
@@ -171,6 +169,5 @@ function renderFonts() {
 renderFonts();
 input.addEventListener('input', renderFonts);
 </script>
-
 </body>
 </html>
